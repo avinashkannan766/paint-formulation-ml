@@ -1,5 +1,9 @@
 # Paint Formulation ML
 
+**Live demo:** https://paint-formulation-ml.streamlit.app/ (free hosting, so it may take a minute to wake up on the first visit)
+
+![App screenshot](docs/app.png)
+
 Predict the properties of a water-based emulsion paint from its formulation, and work backwards from target properties to a low-cost recipe.
 
 > **Important:** all data in this repository is **synthetic**. Properties are simulated from simplified paint-science relationships plus noise. The code, validation approach and workflow are real; the numbers are **not** measurements of real paint. Do not use the predictions for real formulation decisions.
@@ -106,3 +110,4 @@ data/paint_formulations.csv  Synthetic dataset
 reports/                     Charts and metrics from train.py
 requirements.txt
 ```
+
