@@ -8,6 +8,7 @@ import pandas as pd
 import streamlit as st
 
 import design
+from ensure_models import ensure_models
 from paint_science import BINDER_TYPES, COMPONENTS, LABELS
 
 st.set_page_config(page_title="Suggest a recipe", layout="wide")
@@ -17,6 +18,13 @@ st.caption(
     "the trained models and shows the cheapest ones that qualify. Models are trained on "
     "SYNTHETIC data, so treat this as a learning tool."
 )
+
+@st.cache_resource(show_spinner="First start: training the models. This takes a minute or two...")
+def prepare_models():
+    return ensure_models()
+
+
+prepare_models()  # trains the models once if models/ is missing (e.g. on a fresh deployment)
 
 if not (Path(design.BASE) / "models" / "meta.json").exists():
     st.error("No trained models found. Run `python train.py` first.")

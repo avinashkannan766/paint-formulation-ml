@@ -11,12 +11,21 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
+from ensure_models import ensure_models
 from paint_science import (BINDER_TYPES, COMPONENTS, LABELS, build_features, derive,
                            finish_from_gloss)
 
 BASE = Path(__file__).resolve().parent
 
 st.set_page_config(page_title="Paint property predictor", layout="wide")
+
+
+@st.cache_resource(show_spinner="First start: training the models. This takes a minute or two...")
+def prepare_models():
+    return ensure_models()
+
+
+prepare_models()  # trains the models once if models/ is missing (e.g. on a fresh deployment)
 
 
 @st.cache_resource
