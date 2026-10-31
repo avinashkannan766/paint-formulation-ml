@@ -27,6 +27,7 @@ python design.py             # command-line recipe search example
 ```
 
 Re-run `train.py` whenever you change the data or the generator.
+![App screenshot](docs/app.png)
 
 ## Key ideas
 
